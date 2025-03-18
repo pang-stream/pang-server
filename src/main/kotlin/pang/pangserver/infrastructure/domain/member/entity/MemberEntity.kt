@@ -1,24 +1,28 @@
 package pang.pangserver.infrastructure.domain.member.entity
 
 import jakarta.persistence.*
+import pang.pangserver.infrastructure.domain.member.enumeration.MemberRole
+import pang.pangserver.infrastructure.domain.support.entity.BasicEntity
 import java.util.*
 
 @Entity(name = "member")
 class MemberEntity (
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private val id: UUID = UUID.randomUUID(),
+    val id: UUID = UUID.randomUUID(),
 
     @Column(nullable = false, unique = true)
-    private val username: String,
+    val username: String,
 
-    private val nickname: String? = null,
+    val nickname: String? = null,
 
-    private val email: String,
-
-    @Column(columnDefinition = "text")
-    private val password: String,
+    val email: String,
 
     @Column(columnDefinition = "text")
-    private val profileImage: String? = null,
-)
+    val password: String,
+
+    @Column(columnDefinition = "text")
+    val profileImage: String? = null,
+
+    val role: MemberRole? = null,
+): BasicEntity()
