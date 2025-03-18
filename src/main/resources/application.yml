@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: pang-server
+  datasource:
+    url: ${DB_URL}
+    password: ${DB_PASSWORD}
+    username: ${DB_USER}
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+    show-sql: false
