@@ -1,6 +1,6 @@
 package pang.pangserver.infrastructure.domain.member.enumeration
 
 enum class MemberRole(val value: String) {
-    ROLE_MEMBER("ROLE_MEMBER"),
-    ROLE_ADMIN("ROLE_ADMIN"),
+    MEMBER("ROLE_MEMBER"),
+    ADMIN("ROLE_ADMIN"),
 }

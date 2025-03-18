@@ -1,0 +1,19 @@
+package pang.pangserver.application.auth.data.request
+
+import pang.pangserver.infrastructure.domain.member.entity.MemberEntity
+import pang.pangserver.infrastructure.domain.member.enumeration.MemberRole
+
+data class SignUpRequest(
+    val email: String,
+    val username: String,
+    val password: String,
+) {
+    fun toEntity(): MemberEntity {
+        return MemberEntity(
+            email = email,
+            username = username,
+            password = password,
+            role = MemberRole.MEMBER
+        )
+    }
+}

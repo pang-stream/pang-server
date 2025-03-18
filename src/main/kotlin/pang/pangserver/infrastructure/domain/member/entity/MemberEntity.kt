@@ -14,6 +14,7 @@ class MemberEntity (
     @Column(nullable = false, unique = true)
     val username: String,
 
+    @Column(nullable = true)
     val nickname: String? = null,
 
     val email: String,
@@ -21,8 +22,10 @@ class MemberEntity (
     @Column(columnDefinition = "text")
     val password: String,
 
-    @Column(columnDefinition = "text")
+    @Column(nullable = true, columnDefinition = "text")
     val profileImage: String? = null,
 
-    val role: MemberRole? = null,
+    val role: MemberRole,
+
+    val isAlarm: Boolean? = false,
 ): BasicEntity()
