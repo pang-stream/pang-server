@@ -8,11 +8,11 @@ data class SignUpRequest(
     val username: String,
     val password: String,
 ) {
-    fun toEntity(): MemberEntity {
+    fun toEntity(encodedPassword: String): MemberEntity {
         return MemberEntity(
             email = email,
             username = username,
-            password = password,
+            password = encodedPassword,
             role = MemberRole.MEMBER
         )
     }

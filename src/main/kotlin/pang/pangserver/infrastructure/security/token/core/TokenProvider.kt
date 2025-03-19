@@ -12,7 +12,7 @@ import java.util.*
 class TokenProvider(
     private val properties: TokenProperties,
 ) {
-    fun generate(tokenType: TokenType, member: MemberEntity, expire: Long): String {
+    private fun generate(tokenType: TokenType, member: MemberEntity, expire: Long): String {
         return Jwts.builder()
             .claim("category", tokenType.value)
             .claim("email", member.email)
@@ -22,4 +22,11 @@ class TokenProvider(
             .signWith(properties.secretKey())
             .compact()
     }
+
+    fun generateAccess(member: MemberEntity): String
+        = generate(TokenType.ACCESS_TOKEN, member, properties.access)
+
+    fun generatRefresh(member: MemberEntity): String
+            = generate(TokenType.REFRESH_TOKEN, member, properties.refresh)
+
 }

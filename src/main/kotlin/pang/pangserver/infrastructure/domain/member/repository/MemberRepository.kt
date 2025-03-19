@@ -5,5 +5,6 @@ import pang.pangserver.infrastructure.domain.member.entity.MemberEntity
 import java.util.*
 
 interface MemberRepository: JpaRepository<MemberEntity, UUID> {
-
+    fun findByEmail(email: String): MemberEntity?
+    fun findByUsername(username: String): MemberEntity?
 }

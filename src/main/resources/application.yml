@@ -14,6 +14,11 @@ spring:
     properties:
       hibernate:
     show-sql: false
+  data:
+    redis:
+      port: 6379
+      host: localhost
+      password: ${REDIS_PASSWORD}
 jwt:
   access: 360000
   refresh: 30000000
