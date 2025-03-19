@@ -3,8 +3,8 @@ package pang.pangserver.application.support.data
 import org.springframework.http.HttpStatus
 
 open class Response(
-    val status: Int,
-    val message: String
+    open val status: Int,
+    open val message: String
 ) {
     companion object {
         fun of(status: HttpStatus, message: String): Response {

@@ -10,7 +10,11 @@ spring:
       minimum-idle: 5
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
     show-sql: false
+jwt:
+  access: 360000
+  refresh: 30000000
+  secret: ${JWT_KEY}

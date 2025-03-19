@@ -3,9 +3,9 @@ package pang.pangserver.application.support.data
 import org.springframework.http.HttpStatus
 
 class DataResponse<T>(
-    status: Int,
-    message: String,
-    data: T
+    override val status: Int,
+    override val message: String,
+    val data: T
 ): Response(status, message) {
     companion object {
         fun<T> of(status: HttpStatus, message: String, data: T): DataResponse<T> {
