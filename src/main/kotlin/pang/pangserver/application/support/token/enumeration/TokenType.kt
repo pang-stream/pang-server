@@ -1,4 +1,4 @@
-package pang.pangserver.application.support.enumeration
+package pang.pangserver.application.support.token.enumeration
 
 enum class TokenType(
     val value: String,

@@ -3,7 +3,7 @@ package pang.pangserver.infrastructure.security.token.core
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import org.springframework.stereotype.Component
-import pang.pangserver.application.support.enumeration.TokenType
+import pang.pangserver.application.support.token.enumeration.TokenType
 import pang.pangserver.infrastructure.security.token.properties.TokenProperties
 import java.util.*
 
