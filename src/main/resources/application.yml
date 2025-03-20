@@ -9,7 +9,6 @@ spring:
       maximum-pool-size: 10
       minimum-idle: 5
   jpa:
-    open-in-view: false
     hibernate:
       ddl-auto: none
     properties:
