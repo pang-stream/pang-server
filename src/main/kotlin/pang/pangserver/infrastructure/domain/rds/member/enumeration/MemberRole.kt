@@ -1,4 +1,4 @@
-package pang.pangserver.infrastructure.domain.member.enumeration
+package pang.pangserver.infrastructure.domain.rds.member.enumeration
 
 enum class MemberRole(val value: String) {
     MEMBER("ROLE_MEMBER"),

@@ -1,4 +1,4 @@
-package pang.pangserver.infrastructure.domain.member.exception
+package pang.pangserver.infrastructure.domain.rds.member.exception
 
 import pang.pangserver.core.exception.StatusCode
 

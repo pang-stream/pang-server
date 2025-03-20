@@ -8,8 +8,8 @@ import pang.pangserver.application.auth.data.request.SignUpRequest
 import pang.pangserver.application.auth.data.response.TokenResponse
 import pang.pangserver.application.support.data.DataResponse
 import pang.pangserver.application.support.data.Response
-import pang.pangserver.infrastructure.domain.member.entity.MemberEntity
-import pang.pangserver.infrastructure.domain.member.service.MemberService
+import pang.pangserver.infrastructure.domain.rds.member.entity.MemberEntity
+import pang.pangserver.infrastructure.domain.rds.member.service.MemberService
 import pang.pangserver.infrastructure.security.token.core.TokenProvider
 
 @Component

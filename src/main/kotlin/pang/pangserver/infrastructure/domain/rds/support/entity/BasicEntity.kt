@@ -1,4 +1,4 @@
-package pang.pangserver.infrastructure.domain.support.entity
+package pang.pangserver.infrastructure.domain.rds.support.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.EntityListeners

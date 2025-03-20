@@ -1,10 +1,10 @@
-package pang.pangserver.infrastructure.domain.member.service
+package pang.pangserver.infrastructure.domain.rds.member.service
 
 import org.springframework.stereotype.Service
-import pang.pangserver.infrastructure.domain.member.entity.MemberEntity
-import pang.pangserver.infrastructure.domain.member.exception.MemberAlreadyExistsException
-import pang.pangserver.infrastructure.domain.member.exception.MemberNotFoundException
-import pang.pangserver.infrastructure.domain.member.repository.MemberRepository
+import pang.pangserver.infrastructure.domain.rds.member.entity.MemberEntity
+import pang.pangserver.infrastructure.domain.rds.member.exception.MemberAlreadyExistsException
+import pang.pangserver.infrastructure.domain.rds.member.exception.MemberNotFoundException
+import pang.pangserver.infrastructure.domain.rds.member.repository.MemberRepository
 
 @Service
 class MemberService(
