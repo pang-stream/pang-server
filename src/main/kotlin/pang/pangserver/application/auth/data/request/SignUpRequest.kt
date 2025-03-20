@@ -1,7 +1,7 @@
 package pang.pangserver.application.auth.data.request
 
-import pang.pangserver.infrastructure.domain.member.entity.MemberEntity
-import pang.pangserver.infrastructure.domain.member.enumeration.MemberRole
+import pang.pangserver.infrastructure.domain.rds.member.entity.MemberEntity
+import pang.pangserver.infrastructure.domain.rds.member.enumeration.MemberRole
 
 data class SignUpRequest(
     val email: String,

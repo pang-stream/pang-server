@@ -1,9 +1,9 @@
-package pang.pangserver.infrastructure.domain.member.entity
+package pang.pangserver.infrastructure.domain.rds.member.entity
 
 import jakarta.persistence.*
-import pang.pangserver.infrastructure.domain.member.enumeration.MemberRole
-import pang.pangserver.infrastructure.domain.member.exception.PasswordNotMatchException
-import pang.pangserver.infrastructure.domain.support.entity.BasicEntity
+import pang.pangserver.infrastructure.domain.rds.member.enumeration.MemberRole
+import pang.pangserver.infrastructure.domain.rds.member.exception.PasswordNotMatchException
+import pang.pangserver.infrastructure.domain.rds.support.entity.BasicEntity
 import java.util.*
 
 @Entity(name = "member")
