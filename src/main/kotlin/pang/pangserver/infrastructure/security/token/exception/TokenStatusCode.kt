@@ -9,4 +9,5 @@ enum class TokenStatusCode(
     TOKEN_EXPIRED(400, "token expired"),
     TOKEN_INVALID(404, "token invalid"),
     FAKE_TOKEN(409, "fake token"),
+    EMPTY_TOKEN(401, "empty token")
 }

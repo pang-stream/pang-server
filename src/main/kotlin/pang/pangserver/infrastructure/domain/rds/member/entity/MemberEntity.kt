@@ -1,6 +1,7 @@
 package pang.pangserver.infrastructure.domain.rds.member.entity
 
 import jakarta.persistence.*
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import pang.pangserver.infrastructure.domain.rds.member.enumeration.MemberRole
 import pang.pangserver.infrastructure.domain.rds.member.exception.PasswordNotMatchException
 import pang.pangserver.infrastructure.domain.rds.support.entity.BasicEntity
@@ -31,8 +32,8 @@ class MemberEntity (
 
     val isAlarm: Boolean? = false,
 ): BasicEntity() {
-    fun checkIfPasswordIsCorrect(encodedPassword: String) {
-        if (password == encodedPassword) return
-        throw PasswordNotMatchException()
+    fun checkIfPasswordIsCorrect(encoder: BCryptPasswordEncoder, encodedPassword: String) {
+        if (!encoder.matches(encodedPassword, password))
+            throw PasswordNotMatchException()
     }
 }
