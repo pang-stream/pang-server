@@ -18,8 +18,8 @@ class TokenRedisService (
         return redisTemplate.opsForValue().get("refresh_token:$id")
     }
 
-    fun checkIfRefreshTokenIsCorrect(refreshToken: String , id: UUID)  {
-        if (refreshToken == getRefreshToken(id)) return
-        throw RefreshTokenNotMatchException()
+    fun checkIfRefreshTokenIsCorrect(refreshToken: String, id: UUID)  {
+        if (refreshToken != getRefreshToken(id))
+            throw RefreshTokenNotMatchException()
     }
 }

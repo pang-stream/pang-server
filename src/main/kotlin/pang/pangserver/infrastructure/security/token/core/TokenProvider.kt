@@ -30,7 +30,7 @@ class TokenProvider(
 
     fun generatRefresh(member: MemberEntity): String {
         val refreshToken = generate(TokenType.REFRESH_TOKEN, member, properties.refresh)
-        tokenRedisService.storeRefreshToken(member.id, refreshToken)
+        tokenRedisService.storeRefreshToken(member.id!!, refreshToken)
         return refreshToken
     }
 }

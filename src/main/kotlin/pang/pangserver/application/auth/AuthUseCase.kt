@@ -34,13 +34,13 @@ class AuthUseCase(
     @Transactional(readOnly = true)
     fun login(request: SignInRequest): DataResponse<TokenResponse> {
         val member: MemberEntity = memberService.findByEmail(request.email)
-        member.checkIfPasswordIsCorrect(encoder.encode(request.password))
+        member.checkIfPasswordIsCorrect(encoder, request.password)
         return DataResponse.ok("login successful", createTokens(member))
     }
 
     fun refresh(request: RefreshRequest): DataResponse<TokenResponse> {
         val member: MemberEntity = memberService.findByEmail(tokenParser.findEmail(request.refreshToken))
-        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refreshToken, member.id)
+        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refreshToken, member.id!!)
         return DataResponse.ok("refresh token successful", createTokens(member))
     }
 
