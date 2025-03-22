@@ -11,13 +11,7 @@ class MemberService(
     private val memberRepository: MemberRepository
 ) {
     fun validateMemberDuplicated(username: String, email: String) {
-        require(memberRepository.findByEmail(email) == null && memberRepository.findByUsername(username) == null) {
-            throw MemberAlreadyExistsException()
-        }
-    }
-
-    fun findByUsername(username: String): MemberEntity? {
-        return memberRepository.findByUsername(username)
+        if(memberRepository.findByEmailOrUsername(email, username).isNotEmpty()) throw MemberAlreadyExistsException()
     }
 
     fun save(member: MemberEntity)
