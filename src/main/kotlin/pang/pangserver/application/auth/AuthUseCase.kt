@@ -24,7 +24,6 @@ class AuthUseCase(
     private val tokenParser: TokenParser,
     private val tokenRedisService: TokenRedisService
 ) {
-    @Transactional
     fun register(request: SignUpRequest): Response {
         memberService.validateMemberDuplicated(request.username, request.email)
         memberService.save(request.toEntity(encoder.encode(request.password)))
@@ -39,8 +38,8 @@ class AuthUseCase(
     }
 
     fun refresh(request: RefreshRequest): DataResponse<TokenResponse> {
-        val member: MemberEntity = memberService.findByEmail(tokenParser.findEmail(request.refreshToken))
-        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refreshToken, member.id!!)
+        val member: MemberEntity = memberService.findByEmail(tokenParser.findEmail(request.refresh))
+        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, member.id!!)
         return DataResponse.ok("refresh token successful", createTokens(member))
     }
 
