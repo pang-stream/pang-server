@@ -1,6 +1,7 @@
 package pang.pangserver.presentation.auth
 
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import pang.pangserver.application.auth.AuthUseCase
@@ -16,7 +17,7 @@ class AuthController(
     private val useCase: AuthUseCase
 ) {
     @PostMapping("/sign-up")
-    fun signUp(request: SignUpRequest): Response {
+    fun signUp(@RequestBody request: SignUpRequest): Response {
         return useCase.register(request);
     }
 
