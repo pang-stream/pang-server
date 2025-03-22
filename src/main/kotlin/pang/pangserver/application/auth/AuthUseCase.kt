@@ -28,7 +28,7 @@ class AuthUseCase(
     fun register(request: SignUpRequest): Response {
         memberService.validateMemberDuplicated(request.username, request.email)
         memberService.save(request.toEntity(encoder.encode(request.password)))
-        return Response.noContent("register successful")
+        return Response.ok("register successful")
     }
 
     @Transactional(readOnly = true)
