@@ -51,7 +51,7 @@ class AuthUseCase(
     private fun createTokens(member: MemberEntity): TokenResponse {
         return TokenResponse(
             provider.generateAccess(member),
-            provider.generatRefresh(member)
+            provider.generateRefresh(member)
         )
     }
 }
