@@ -14,7 +14,7 @@ import pang.pangserver.infrastructure.security.token.core.TokenValidator
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val tokenValidator: TokenValidator,
+    private val tokenFilter: TokenFilter,
     private val tokenExceptionHandlerFilter: TokenExceptionHandlerFilter
 ) {
     @Bean
@@ -29,7 +29,7 @@ class SecurityConfig(
                     .requestMatchers("/auth/*").permitAll()
                     .anyRequest().authenticated()
             }
-            .addFilterAfter(TokenFilter(tokenValidator), UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterAfter(tokenFilter, UsernamePasswordAuthenticationFilter::class.java)
             .addFilterBefore(tokenExceptionHandlerFilter, TokenFilter::class.java)
         return http.build()
     }
