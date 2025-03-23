@@ -25,20 +25,27 @@ class TokenFilter (
     companion object {
         private const val TOKEN_SECURE_TYPE = "Bearer "
     }
+
     override fun doFilterInternal(
         request: HttpServletRequest,
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        if (!request.getHeader(HttpHeaders.AUTHORIZATION).isNullOrEmpty()) {
-            val token: String? = request.getHeader("Authorization")
-            if (token.isNullOrEmpty() || !token.startsWith(TOKEN_SECURE_TYPE)) throw EmptyTokenException()
+        if (request.getHeader(HttpHeaders.AUTHORIZATION) != null) {
+            val token: String = request.getHeader("Authorization")?: throw EmptyTokenException()
+            if (!token.startsWith(TOKEN_SECURE_TYPE)) throw EmptyTokenException()
             tokenValidator.validateAll(token.removePrefix(TOKEN_SECURE_TYPE), TokenType.ACCESS_TOKEN)
-
-            val member = MemberDetails(memberRepository.findByUsername(tokenParser.findUsername(token))?: throw MemberNotFoundException())
-            SecurityContextHolder.getContext().authentication = UsernamePasswordAuthenticationToken(member, null, member.authorities)
+            setAuthentication(token.removePrefix(TOKEN_SECURE_TYPE))
         }
-
         filterChain.doFilter(request, response)
+    }
+
+    private fun setAuthentication(token: String) {
+        val member = getMemberDetails(token)
+        SecurityContextHolder.getContext().authentication = UsernamePasswordAuthenticationToken(member, null, member.authorities)
+    }
+
+    private fun getMemberDetails(token: String): MemberDetails {
+        return MemberDetails(memberRepository.findByUsername(tokenParser.findUsername(token))?: throw MemberNotFoundException())
     }
 }
