@@ -17,7 +17,7 @@ class TokenProvider(
     private fun generate(tokenType: TokenType, member: MemberEntity, expire: Long): String {
         return Jwts.builder()
             .claim("category", tokenType.value)
-            .claim("email", member.email)
+            .claim("username", member.username)
             .claim("role", member.role)
             .issuedAt(Date(currentTimeMillis()))
             .expiration(Date(currentTimeMillis() + expire))

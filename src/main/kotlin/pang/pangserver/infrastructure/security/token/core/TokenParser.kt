@@ -19,8 +19,8 @@ class TokenParser(
         return createClaims(token).expiration
     }
 
-    fun findEmail(token: String): String {
-        return createClaims(token)["email"].toString()
+    fun findUsername(token: String): String {
+        return createClaims(token)["username"].toString()
     }
 
     private fun createClaims(token: String): Claims {
