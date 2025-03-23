@@ -32,8 +32,4 @@ class MemberEntity (
 
     val isAlarm: Boolean? = false,
 ): BasicEntity() {
-    fun checkIfPasswordIsCorrect(encoder: BCryptPasswordEncoder, encodedPassword: String) {
-        if (!encoder.matches(encodedPassword, password))
-            throw PasswordNotMatchException()
-    }
 }
