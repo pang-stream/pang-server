@@ -28,7 +28,7 @@ class TokenProvider(
     fun generateAccess(member: MemberEntity): String
         = generate(TokenType.ACCESS_TOKEN, member, properties.access)
 
-    fun generatRefresh(member: MemberEntity): String {
+    fun generateRefresh(member: MemberEntity): String {
         val refreshToken = generate(TokenType.REFRESH_TOKEN, member, properties.refresh)
         tokenRedisService.storeRefreshToken(member.id!!, refreshToken)
         return refreshToken
