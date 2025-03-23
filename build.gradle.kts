@@ -39,6 +39,9 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.12.3")
     implementation("io.jsonwebtoken:jjwt-impl:0.12.3")
     implementation("io.jsonwebtoken:jjwt-jackson:0.12.3")
+
+    // SpringDoc
+    implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
 }
 
 kotlin {
