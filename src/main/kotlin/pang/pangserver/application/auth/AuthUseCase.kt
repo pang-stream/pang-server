@@ -10,6 +10,7 @@ import pang.pangserver.application.auth.data.response.TokenResponse
 import pang.pangserver.application.support.data.DataResponse
 import pang.pangserver.application.support.data.Response
 import pang.pangserver.infrastructure.domain.rds.member.entity.MemberEntity
+import pang.pangserver.infrastructure.domain.rds.member.exception.PasswordNotMatchException
 import pang.pangserver.infrastructure.domain.rds.member.service.MemberService
 import pang.pangserver.infrastructure.domain.redis.token.service.TokenRedisService
 import pang.pangserver.infrastructure.security.token.core.TokenParser
@@ -33,7 +34,7 @@ class AuthUseCase(
     @Transactional(readOnly = true)
     fun login(request: SignInRequest): DataResponse<TokenResponse> {
         val member: MemberEntity = memberService.findByEmail(request.email)
-        member.checkIfPasswordIsCorrect(encoder, request.password)
+        checkIfPasswordIsCorrect(request.password, member.password)
         return DataResponse.ok("login successful", createTokens(member))
     }
 
@@ -41,6 +42,10 @@ class AuthUseCase(
         val member: MemberEntity = memberService.findByEmail(tokenParser.findEmail(request.refresh))
         tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, member.id!!)
         return DataResponse.ok("refresh token successful", createTokens(member))
+    }
+
+    private fun checkIfPasswordIsCorrect(rawPassword: String, encodedPassword: String) {
+        if(encoder.matches(rawPassword, encodedPassword)) throw PasswordNotMatchException()
     }
 
     private fun createTokens(member: MemberEntity): TokenResponse {
