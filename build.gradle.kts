@@ -45,7 +45,7 @@ dependencies {
     implementation("com.corundumstudio.socketio:netty-socketio:2.0.13")
 
     // SpringDoc
-    implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
 }
 
 kotlin {
