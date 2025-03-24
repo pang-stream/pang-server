@@ -31,7 +31,7 @@ class TokenFilter (
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        if (request.getHeader(HttpHeaders.AUTHORIZATION) != null) {
+        if (request.getHeader(HttpHeaders.AUTHORIZATION).isNotEmpty()) {
             val token: String = request.getHeader("Authorization")?: throw EmptyTokenException()
             if (!token.startsWith(TOKEN_SECURE_TYPE)) throw EmptyTokenException()
             tokenValidator.validateAll(token.removePrefix(TOKEN_SECURE_TYPE), TokenType.ACCESS_TOKEN)
