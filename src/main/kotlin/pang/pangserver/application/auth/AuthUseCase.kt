@@ -40,7 +40,7 @@ class AuthUseCase(
 
     fun refresh(request: RefreshRequest): DataResponse<TokenResponse> {
         val member: MemberEntity = memberService.findByEmail(tokenParser.findUsername(request.refresh))
-        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, member.id!!)
+        tokenRedisService.checkIfRefreshTokenIsCorrect(request.refresh, member.username)
         return DataResponse.ok("refresh token successful", createTokens(member))
     }
 
