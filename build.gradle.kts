@@ -27,7 +27,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-data-redis")
-    implementation("org.springframework.boot:spring-boot-starter-websocket")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
@@ -43,7 +42,7 @@ dependencies {
     //socket
     implementation("org.springframework.boot:spring-boot-starter-websocket")
     implementation("com.corundumstudio.socketio:netty-socketio:2.0.13")
-
+    
     // SpringDoc
     implementation ("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0")
 }
