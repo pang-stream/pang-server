@@ -5,5 +5,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties(prefix = "socket")
 data class SocketIoProperties(
     val host: String,
-    val prot: Int
+    val port: Int
 )

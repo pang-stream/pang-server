@@ -24,3 +24,6 @@ jwt:
   access: 360000
   refresh: 30000000
   secret: ${JWT_KEY}
+socket:
+  host: localhost
+  port: 8081

@@ -18,7 +18,7 @@ class SocketIoConfig(
     fun socketIoServer(): SocketIOServer {
         val config = SocketIoConfiguration()
         config.hostname = properties.host
-        config.port = properties.prot
+        config.port = properties.port
         return SocketIOServer(config)
     }
 }
