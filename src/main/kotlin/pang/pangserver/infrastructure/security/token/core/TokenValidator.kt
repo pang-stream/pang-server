@@ -33,7 +33,6 @@ class TokenValidator(
         } catch (e: SignatureException) {
             throw FakeTokenException()
         } catch (e: Exception) {
-            println("에러내용" + e)
             throw InvalidTokenException()
         }
     }

@@ -17,7 +17,7 @@ class TokenProvider(
     private fun generate(tokenType: TokenType, member: MemberEntity, expire: Long): String {
         return Jwts.builder()
             .claim("category", tokenType.value)
-            .claim("email", member.email)
+            .claim("username", member.username)
             .claim("role", member.role)
             .issuedAt(Date(currentTimeMillis()))
             .expiration(Date(currentTimeMillis() + expire))
@@ -28,9 +28,9 @@ class TokenProvider(
     fun generateAccess(member: MemberEntity): String
         = generate(TokenType.ACCESS_TOKEN, member, properties.access)
 
-    fun generatRefresh(member: MemberEntity): String {
+    fun generateRefresh(member: MemberEntity): String {
         val refreshToken = generate(TokenType.REFRESH_TOKEN, member, properties.refresh)
-        tokenRedisService.storeRefreshToken(member.id!!, refreshToken)
+        tokenRedisService.storeRefreshToken(member.username, refreshToken)
         return refreshToken
     }
 }

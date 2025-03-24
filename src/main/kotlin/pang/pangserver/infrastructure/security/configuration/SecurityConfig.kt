@@ -7,13 +7,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import pang.pangserver.infrastructure.security.filter.TokenExceptionHandlerFilter
 import pang.pangserver.infrastructure.security.filter.TokenFilter
 import pang.pangserver.infrastructure.security.token.core.TokenValidator
 
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val tokenValidator: TokenValidator,
+    private val tokenFilter: TokenFilter,
+    private val tokenExceptionHandlerFilter: TokenExceptionHandlerFilter
 ) {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
@@ -27,7 +29,8 @@ class SecurityConfig(
                     .requestMatchers("/auth/*").permitAll()
                     .anyRequest().authenticated()
             }
-            .addFilterBefore(TokenFilter(tokenValidator), UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterAfter(tokenFilter, UsernamePasswordAuthenticationFilter::class.java)
+            .addFilterBefore(tokenExceptionHandlerFilter, TokenFilter::class.java)
         return http.build()
     }
 
