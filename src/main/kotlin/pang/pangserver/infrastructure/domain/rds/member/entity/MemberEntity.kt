@@ -20,10 +20,10 @@ class MemberEntity (
     val email: String,
 
     @Column(nullable = true)
-    val nickname: String? = null,
+    var nickname: String? = null,
 
     @Column(columnDefinition = "text")
-    val password: String,
+    var password: String,
 
     @Column(nullable = true, columnDefinition = "text")
     val profileImage: String? = null,
