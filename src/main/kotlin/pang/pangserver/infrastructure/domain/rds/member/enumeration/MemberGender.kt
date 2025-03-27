@@ -1,5 +1,7 @@
 package pang.pangserver.infrastructure.domain.rds.member.enumeration
 
 enum class MemberGender {
-    MALE, FEMALE
+    MALE,
+    FEMALE,
+    ETC
 }

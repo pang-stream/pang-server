@@ -3,15 +3,17 @@ package pang.pangserver.application.member
 import org.springframework.stereotype.Component
 import pang.pangserver.application.support.data.Response
 import pang.pangserver.application.member.data.request.UpdateMemberRequest
-import pang.pangserver.infrastructure.domain.rds.member.entity.MemberEntity
-import pang.pangserver.infrastructure.domain.rds.member.repository.MemberRepository
+import pang.pangserver.infrastructure.domain.rds.member.service.MemberService
 import pang.pangserver.infrastructure.security.token.support.MemberAuthenticationHolder
 
 @Component
 class MemberUseCase(
-    private val repository: MemberRepository
+    private val memberService: MemberService,
 ) {
-    fun update(request: UpdateMemberRequest): Response {
-        TODO("업데이트")
+    fun patchInfo(request: UpdateMemberRequest): Response {
+        val member = MemberAuthenticationHolder.current()
+        member.updateInfo(request.nickname, request.gender, request.birthday, request.isAlarm)
+        memberService.save(member)
+        return Response.ok("업데이트 성공")
     }
 }

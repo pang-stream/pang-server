@@ -13,8 +13,8 @@ import pang.pangserver.application.support.data.Response
 class MemberController(
     private val useCase: MemberUseCase
 ) {
-    @PatchMapping
+    @PatchMapping("/info")
     fun update(@RequestBody request: UpdateMemberRequest): Response {
-        return useCase.update(request);
+        return useCase.patchInfo(request);
     }
 }
