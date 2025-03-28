@@ -12,7 +12,7 @@ class MemberUseCase(
 ) {
     fun patchInfo(request: UpdateMemberRequest): Response {
         val member = MemberAuthenticationHolder.current()
-        member.updateInfo(request.nickname, request.gender, request.birthday, request.isAlarm)
+        member.updateInfo(request.nickname, request.gender, request.birthDay, request.isAlarm)
         memberService.save(member)
         return Response.ok("업데이트 성공")
     }

@@ -7,6 +7,6 @@ data class UpdateMemberRequest(
     var nickname: String? = null,
     var age: Int? = null,
     var gender: MemberGender? = null,
-    var birthday: LocalDate? = null,
+    var birthDay: LocalDate? = null,
     var isAlarm: Boolean? = null,
 )
