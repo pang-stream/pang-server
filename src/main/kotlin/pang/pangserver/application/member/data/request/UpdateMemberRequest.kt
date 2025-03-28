@@ -6,8 +6,7 @@ import java.time.LocalDate
 data class UpdateMemberRequest(
     var nickname: String? = null,
     var age: Int? = null,
-    var postPassword: String? = null,
-    var password: String? = null,
     var gender: MemberGender? = null,
-    var birthday: LocalDate? = null
+    var birthDay: LocalDate? = null,
+    var isAlarm: Boolean? = null,
 )
